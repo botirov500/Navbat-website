@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For presentation</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <a class="logo" href="#"><span class="logo-mark">N</span>Navbat</a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="#navbat">Navbat olish</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#yonalish">Yo'nalishlar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#taksi">Taksi</a></li>
+                </ul>
+            </nav>
+            <div class="auth">
+                <a class="btn btn-ghost" href="#signin">Kirish</a>
+                <a class="btn btn-primary" href="#signup">Ro'yxatdan o'tish</a>
+            </div>
+        </header>
+
+        <main class="main">
+            <section class="hero" id="navbat">
+                <div class="hero-text">
+                    <h1 class="hero-title">Navbatda turmang. Vaqtni o'zingiz tanlang.</h1>
+                    <p class="hero-desc">Davlat xizmatlari, poliklinika, bank va boshqa joylarga borish vaqtini oldindan
+                        band qiling. O'sha soatda nechta odam borligini ko'ring.</p>
+                </div>
+
+                <form class="card booking" id="bookingForm">
+                    <h2 class="card-title">Navbat olish</h2>
+                    <div class="form-row">
+                        <label class="form-label">Ism<input class="form-input" type="text" placeholder="Masalan, Aziza"
+                                required></label>
+                        <label class="form-label">Familiya<input class="form-input" type="text"
+                                placeholder="Masalan, Karimova" required></label>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label">Muassasa turi
+                            <select class="form-select" id="place">
+                                <option value="davlat">Davlat xizmatlari</option>
+                                <option value="poliklinika">Poliklinika</option>
+                                <option value="kasalxona">Kasalxona</option>
+                                <option value="bank">Bank</option>
+                                <option value="pochta">Pochta</option>
+                                <option value="notarius">Notarius</option>
+                                <option value="soliq">Soliq inspeksiyasi</option>
+                                <option value="yhxb">YHXB</option>
+                                <option value="kommunal">Kommunal xizmatlar</option>
+                                <option value="sud">Sud</option>
+                                <option value="talim">Ta'lim</option>
+                                <option value="sugurta">Sug'urta</option>
+                            </select>
+                        </label>
+                        <label class="form-label">Yo'nalish
+                            <select class="form-select" id="service">
+                                <option>Pasport va ID-karta</option>
+                                <option>Kadastr</option>
+                                <option>FYuDO</option>
+                                <option>Haydovchilik guvohnomasi</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label">Filial
+                            <select class="form-select" id="branch">
+                                <option value="0">Davlat xizmatlari — Chilonzor</option>
+                                <option value="1">Davlat xizmatlari — Yunusobod</option>
+                            </select>
+                        </label>
+                        <label class="form-label">Sana<input class="form-input" type="date" id="date" required></label>
+                    </div>
+                    <p class="hours" id="hours"></p>
+
+                    <div class="slots-box">
+                        <p class="slots-title">Vaqtni tanlang</p>
+                        <div class="slots" id="slots"></div>
+                        <div class="legend">
+                            <span class="legend-item"><i class="dot dot-free"></i>Bo'sh</span>
+                            <span class="legend-item"><i class="dot dot-busy"></i>Gavjum</span>
+                            <span class="legend-item"><i class="dot dot-full"></i>To'lgan</span>
+                        </div>
+                    </div>
+
+                    <p class="summary" id="summary">Vaqt tanlanmagan</p>
+                    <button class="btn btn-primary btn-block" type="submit">Navbatni tasdiqlash</button>
+                </form>
+            </section>
+
+            <section class="section" id="yonalish">
+                <h2 class="section-title">Barcha yo'nalishlar</h2>
+                <div class="grid" id="tiles">
+                    <button type="button" class="tile" onclick="pick('davlat')"><span class="tile-icon">🏛️</span>
+                        <h3 class="tile-title">Davlat xizmatlari</h3>
+                        <p class="tile-text">Pasport, kadastr, FYuDO, haydovchilik</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('poliklinika')"><span class="tile-icon">🩺</span>
+                        <h3 class="tile-title">Poliklinika</h3>
+                        <p class="tile-text">Terapevt, mutaxassis, analiz</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('kasalxona')"><span class="tile-icon">🏥</span>
+                        <h3 class="tile-title">Kasalxona</h3>
+                        <p class="tile-text">Ko'rik, tekshiruv, maslahat</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('bank')"><span class="tile-icon">🏦</span>
+                        <h3 class="tile-title">Bank</h3>
+                        <p class="tile-text">Karta, kredit, pul o'tkazma</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('pochta')"><span class="tile-icon">📮</span>
+                        <h3 class="tile-title">Pochta</h3>
+                        <p class="tile-text">Jo'natma va posilkalar</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('notarius')"><span class="tile-icon">🖋️</span>
+                        <h3 class="tile-title">Notarius</h3>
+                        <p class="tile-text">Ishonchnoma va tasdiqlash</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('soliq')"><span class="tile-icon">🧾</span>
+                        <h3 class="tile-title">Soliq inspeksiyasi</h3>
+                        <p class="tile-text">Ro'yxatga olish, to'lovlar, ma'lumotnoma</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('yhxb')"><span class="tile-icon">🚗</span>
+                        <h3 class="tile-title">YHXB</h3>
+                        <p class="tile-text">Avtomobil ro'yxati, raqam, imtihon</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('kommunal')"><span class="tile-icon">💡</span>
+                        <h3 class="tile-title">Kommunal xizmatlar</h3>
+                        <p class="tile-text">Elektr, gaz, suv</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('sud')"><span class="tile-icon">⚖️</span>
+                        <h3 class="tile-title">Sud</h3>
+                        <p class="tile-text">Ariza, hujjat topshirish, qabul</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('talim')"><span class="tile-icon">🎓</span>
+                        <h3 class="tile-title">Ta'lim</h3>
+                        <p class="tile-text">Maktab, bog'cha, universitet qabuli</p>
+                    </button>
+                    <button type="button" class="tile" onclick="pick('sugurta')"><span class="tile-icon">🛡️</span>
+                        <h3 class="tile-title">Sug'urta</h3>
+                        <p class="tile-text">Polis rasmiylashtirish, to'lov</p>
+                    </button>
+                </div>
+            </section>
+
+            <section class="section taxi" id="taksi">
+                <div class="taxi-info">
+                    <h2 class="section-title">🚕 Filialga taksida boring</h2>
+                    <p class="taxi-text">Navbat vaqtingizga mos taksi buyurtma qiling. Haydovchi sizni belgilangan
+                        soatdan oldin olib ketadi.</p>
+                </div>
+                <form class="card taxi-form">
+                    <label class="form-label">Qayerdan<input class="form-input" type="text"
+                            placeholder="Manzilingiz"></label>
+                    <label class="form-label">Qayerga<select class="form-select" id="taxiTo">
+                            <optgroup label="Davlat xizmatlari">
+                                <option>Davlat xizmatlari — Chilonzor</option>
+                                <option>Davlat xizmatlari — Yunusobod</option>
+                            </optgroup>
+                            <optgroup label="Poliklinika">
+                                <option>1-son oilaviy poliklinika</option>
+                                <option>5-son shahar poliklinikasi</option>
+                            </optgroup>
+                            <optgroup label="Kasalxona">
+                                <option>Shahar kasalxonasi</option>
+                            </optgroup>
+                            <optgroup label="Bank">
+                                <option>Markaziy bank bo'limi</option>
+                                <option>Chilonzor bank bo'limi</option>
+                            </optgroup>
+                            <optgroup label="Pochta">
+                                <option>Bosh pochta</option>
+                            </optgroup>
+                            <optgroup label="Notarius">
+                                <option>Davlat notarial idorasi</option>
+                            </optgroup>
+                            <optgroup label="Soliq inspeksiyasi">
+                                <option>Soliq inspeksiyasi — Sergeli</option>
+                            </optgroup>
+                            <optgroup label="YHXB">
+                                <option>YHXB — Yunusobod bo'limi</option>
+                            </optgroup>
+                            <optgroup label="Kommunal xizmatlar">
+                                <option>Kommunal xizmatlar markazi</option>
+                            </optgroup>
+                            <optgroup label="Sud">
+                                <option>Tuman fuqarolik sudi</option>
+                            </optgroup>
+                            <optgroup label="Ta'lim">
+                                <option>Ta'lim bo'limi — Mirzo Ulug'bek</option>
+                            </optgroup>
+                            <optgroup label="Sug'urta">
+                                <option>Sug'urta kompaniyasi ofisi</option>
+                            </optgroup>
+                        </select></label>
+                    <label class="form-label">Ketish vaqti<input class="form-input" type="time"></label>
+                    <button class="btn btn-accent btn-block" type="button">Taksi chaqirish</button>
+                </form>
+            </section>
+        </main>
+
+        <footer class="footer">© 2026 Navbat. Barcha huquqlar himoyalangan.</footer>
+    </div>
+</body>
+
+</html>
